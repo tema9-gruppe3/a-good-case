@@ -1,0 +1,149 @@
+---
+
+---
+
+<section class="categories">
+  <h2 class="title">KATEGORIER</h2>
+
+  <div class="can-stage">
+    <div class="can-grid">
+  
+      <div class="row row-top">
+        <img src="/images/can-1-kopi.png" class="can" />
+        <img src="/images/can-1-kopi.png" class="can" />
+        <img src="/images/can-1-kopi.png" class="can" />
+      </div>
+
+   
+      <div class="row row-bottom">
+        <img src="/images/can-1-kopi.png" class="can" />
+        <img src="/images/can-1-kopi.png" class="can" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.categories {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+background-color: #FBFBF7;
+}
+
+
+.title {
+  font-family: sans-serif;
+  margin-bottom: 40px;
+  letter-spacing: 4px;
+  font-weight: 400;
+}
+
+
+.can-stage {
+  position: relative;
+  width: 100%;
+  height: 1000px; 
+  overflow: hidden;
+}
+
+
+.can-grid {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+
+.row {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+}
+
+.row-bottom {
+  gap: 80px;
+}
+
+.can {
+  width: 140px;
+  will-change: transform;
+}
+</style>
+
+<script is:inline>
+  const loadGSAP = () => {
+    const s1 = document.createElement("script");
+    s1.src = "https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js";
+
+    const s2 = document.createElement("script");
+    s2.src = "https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js";
+
+    s1.onload = () => document.body.appendChild(s2);
+    s2.onload = () => initAnimation();
+
+    document.body.appendChild(s1);
+  };
+
+  const initAnimation = () => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const frames = [
+      "/images/can-1-kopi.png",
+      "/images/can-2-kopi.png",
+      "/images/can-3-kopi.png",
+      "/images/can-4-kopi.png",
+      "/images/can-5-kopi.png",
+      "/images/can-6-kopi.png",
+      "/images/can-8-kopi.png",
+    ];
+
+    frames.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
+    const cans = document.querySelectorAll(".can");
+
+    cans.forEach((can) => {
+      let obj = { frame: 0 };
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: can,
+          start: "top 80%",
+          end: "+=120",
+          scrub: true,
+        },
+      });
+
+
+      tl.fromTo(
+        can,
+        { y: 40, scale: 0.9 },
+        { y: -40, scale: 1, ease: "power2.out" },
+        0
+      );
+
+      tl.to(
+        obj,
+        {
+          frame: frames.length - 1,
+          ease: "none",
+          onUpdate: () => {
+            const index = Math.floor(obj.frame);
+            can.src = frames[index];
+          },
+        },
+        0
+      );
+    });
+  };
+
+  loadGSAP();
+</script>
