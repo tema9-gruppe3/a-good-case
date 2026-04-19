@@ -19,12 +19,12 @@ const products = await fetch(endpoint, options).then(res => res.json());
     {products.map((p) => (
       <div class="card">
         <div class="image-wrapper" style={`background:${p.bg}`}>
-          <img src={p.image} alt={p.title} />
+          <img src={p.image} alt={p.productname} />
         </div>
 
         <p class="brand">{p.brand}</p>
-        <h3>{p.title}</h3>
-        <p class="price">{p.price}</p>
+        <h3>{p.productname}</h3>
+        <p class="price">{p.price} DKK</p>
 
         <button>Læg i kurv</button>
       </div>
@@ -46,6 +46,7 @@ h2 {
   letter-spacing: 4px;
   font-weight: 400;
   margin-bottom: 3rem;
+
 }
 
 .grid {
@@ -74,18 +75,23 @@ h2 {
 
 .brand {
   font-size: 0.8rem;
-
+  text-transform: uppercase; 
   letter-spacing: 1px;
+  font-weight: 200;
+  color: gray;
 }
 
 h3 {
   font-size: 1rem;
   margin: 0.5rem 0;
+  font-weight: 550;
+  text-transform: uppercase; 
 }
 
 .price {
   font-size: 0.9rem;
   margin-bottom: 1rem;
+    font-weight: 200;
 }
 
 button {
@@ -106,5 +112,6 @@ button:hover {
   margin-top: 2rem;
   font-size: 0.9rem;
   text-decoration: underline;
+  color: black;
 }
 </style>
