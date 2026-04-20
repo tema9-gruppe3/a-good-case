@@ -1,11 +1,9 @@
 ---
-
+import Newsletter from "./newsletter.astro"
 ---
-
 <section class="hours">
   
   <img src="/images/stock-big.png" alt="" class="bg" />
-
 
   <div class="card">
     <p class="top">VORES LAGERSALGS ÅBNINGSTIDER</p>
@@ -37,19 +35,24 @@
 
     <a href="#" class="link">Læs mere om lagersalg</a>
   </div>
+
+
+  <Newsletter />
+
 </section>
 
 <style>
 .hours {
-      font-family: sans-serif;
   position: relative;
-  height: 500px;
+  height: 600px;
+font-family: sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-}
 
+  overflow: visible;
+}
+ .hero{  position: relative;}
 
 .bg {
   position: absolute;
