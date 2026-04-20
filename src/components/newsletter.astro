@@ -1,0 +1,89 @@
+---
+//@ts-nocheck
+---
+
+<section class="newsletter">
+  <div class="circle">
+    <div class="content">
+        <img src="/images/logo.png" alt="logo" class="logo" />
+
+
+      <h2>Tilmeld dig vores nyhedsbrev</h2>
+
+      <input type="email" placeholder="Email..." />
+
+      <button>Tilmeld</button>
+    </div>
+  </div>
+</section>
+
+<style>
+.newsletter {
+  position: absolute; 
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+     font-family: sans-serif;
+
+
+}
+
+
+.circle {
+  width: 450px;
+  height: 450px;
+  background: #144E17; 
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+    top: 5500px;
+  left: 300px;
+
+}
+
+
+.content {
+  text-align: center;
+  color: white;
+  width: 70%;
+}
+
+
+.logo {
+  padding: 6px 10px;
+  margin-bottom: 20px;
+}
+
+
+h2 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 999px;
+  border: none;
+  margin-bottom: 15px;
+}
+
+
+button {
+  padding: 10px 30px;
+  border-radius: 999px;
+  border: none;
+  background: #f0eeee;
+  cursor: pointer;
+}
+button:hover {
+  background: #144E17;
+  border: 1px solid #f0eeee;
+  color: #f0eeee;}
+</style>
