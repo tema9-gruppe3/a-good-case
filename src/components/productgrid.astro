@@ -6,9 +6,9 @@ const options={
     apikey: "sb_publishable_Mrlx3PF_AAOoGsqYkZUdAg_MuIytlea",
   }
 }
-const products = await fetch(endpoint, options).then(res => res.json());
+const data = await fetch(endpoint, options).then(res => res.json());
 
-
+const {products} = Astro.props;
 
 ---
 
@@ -16,7 +16,8 @@ const products = await fetch(endpoint, options).then(res => res.json());
   <h2>NYHEDER</h2>
 
   <div class="grid">
-    {products.map((p) => (
+    {data.map((p) => (
+      <a href={`details/${p.id}`}>
       <div class="card">
         <div class="image-wrapper" style={`background:${p.bg}`}>
           <img src={p.image} alt={p.productname} />
@@ -25,9 +26,9 @@ const products = await fetch(endpoint, options).then(res => res.json());
         <p class="brand">{p.brand}</p>
         <h3>{p.productname}</h3>
         <p class="price">{p.price} DKK</p>
-
         <button>Læg i kurv</button>
-      </div>
+        </div>
+        </a>
     ))}
   </div>
 
