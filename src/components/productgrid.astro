@@ -13,10 +13,10 @@ const {products} = Astro.props;
 ---
 
 <section class="products">
-  <h2>NYHEDER</h2>
+ 
 
   <div class="grid">
-    {data.map((p) => (
+   {data.slice(0, 4).map((p) => (
       <a href={`details/${p.id}`}>
       <div class="card">
         <div class="image-wrapper" style={`background:${p.bg}`}>
@@ -32,23 +32,19 @@ const {products} = Astro.props;
     ))}
   </div>
 
-  <a href="#" class="see-all">Se alle</a>
+
 </section>
 
 <style>
 .products {
-  padding: 4rem 2rem;
+  padding: 0rem 2rem 4rem 2rem;
   text-align: center;
   background: #FBFBF7;
       font-family: sans-serif;
+     
 }
 
-h2 {
-  letter-spacing: 4px;
-  font-weight: 400;
-  margin-bottom: 3rem;
 
-}
 
 .grid {
   display: grid;
@@ -56,8 +52,13 @@ h2 {
   gap: 2rem;
 }
 
+.grid a {
+  text-decoration: none;
+  color: #000;
+}
 .card {
   text-align: center;
+  text-decoration: none;
 }
 
 .image-wrapper {
@@ -87,6 +88,8 @@ h3 {
   margin: 0.5rem 0;
   font-weight: 550;
   text-transform: uppercase; 
+  color: black;
+  text-decoration: none;
 }
 
 .price {
@@ -108,11 +111,4 @@ button:hover {
   color: white;
 }
 
-.see-all {
-  display: inline-block;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  text-decoration: underline;
-  color: black;
-}
 </style>

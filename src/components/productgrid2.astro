@@ -13,10 +13,10 @@ const products = await fetch(endpoint, options).then(res => res.json());
 ---
 
 <section class="products">
-  <h2>NYHEDER</h2>
+  <h2>ALLE ØL</h2>
 
   <div class="grid">
-    {products.map((p) => (
+   {products.slice(0, 8).map((p) => (
       <div class="card">
         <div class="image-wrapper" style={`background:${p.bg}`}>
           <img src={p.image} alt={p.productname} />
@@ -38,7 +38,7 @@ const products = await fetch(endpoint, options).then(res => res.json());
 .products {
   padding: 4rem 2rem;
   text-align: center;
-  background: #FBFBF7;
+  text-decoration: none;
       font-family: sans-serif;
 }
 
