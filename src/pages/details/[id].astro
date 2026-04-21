@@ -1,0 +1,305 @@
+---
+//@ts-nocheck
+import Layout from '../../layouts/Layout.astro';
+import Productgrid from '../../components/productgrid.astro';
+
+export async function getStaticPaths() {
+  const endpoint = "https://pcuccheoqxtgipxffkca.supabase.co/rest/v1/beer?select=*";
+
+  const options = {
+    headers: {
+      apikey: "sb_publishable_Mrlx3PF_AAOoGsqYkZUdAg_MuIytlea",
+    }
+  };
+
+  const data = await fetch(endpoint, options).then((res) => res.json());
+
+  return data.map((product) => ({
+    params: { id: product.id.toString() },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+
+const COLORS = [
+  "#f5e6c8",
+  "#e0b04b",
+  "#c68642",
+  "#a65a2a",
+  "#7b3f00",
+  "#5a2e0c",
+  "#3b1f0a",
+  "#1f1005"
+];
+const FAULT_TEXT = {
+  1: "Dette produkt er en del af et overskudsparti, hvor producenten har fremstillet flere enheder end efterspørgslen har været. I stedet for at lade varerne stå på lager eller gå til spilde, opkøber vi partiet og sælger det videre til en lavere pris. Kvaliteten er den samme – der er blot tale om for mange producerede varer.",
+  2: "Dette produkt nærmer sig sin “bedst før”-dato, hvilket betyder, at det er tættest på sin optimale smags- eller kvalitetsoplevelse. Det er dog stadig fuldt anvendeligt og sikkert at bruge. For at undgå spild sælges det til en reduceret pris.",
+  3: "Prisen er lavere, fordi produktet er en del af et overskudsparti eller har små afvigelser, som ikke påvirker kvaliteten. I stedet for at lade det gå til spilde, giver vi det en ny chance – og du får en bedre pris.",
+  4: "Dette produkt er opkøbt fra et parti, som ikke kunne sælges gennem de normale kanaler. Det kan skyldes alt fra emballagefejl til overproduktion – men indholdet er stadig af høj kvalitet.",
+  5: "Dette produkt er en del af et overskudsparti, hvor producenten har fremstillet flere enheder end efterspørgslen har været. I stedet for at lade varerne stå på lager eller gå til spilde, opkøber vi partiet og sælger det videre til en lavere pris. Kvaliteten er den samme – der er blot tale om for mange producerede varer."
+};
+
+
+
+
+---
+
+<Layout>
+<section class="product">
+
+
+  <div class="image-wrapper">
+    <img src={product.image} alt={product.productname} />
+  </div>
+
+
+  <div class="info">
+    <h1>{product.productname}</h1>
+    <h2>{product.brand}</h2>
+
+    <p class="price">{product.price.toFixed(2)} DKK</p>
+    <p class="compare">Pris hos eksterne forhandlere er op til <strong>62,00 DKK</strong></p>
+
+
+    <div class="options">
+      <button>single</button>
+      <button class="active">6 pack</button>
+    </div>
+
+
+    <div class="cart">
+      <div class="quantity">
+        <span>-</span>
+        <span>1</span>
+        <span>+</span>
+      </div>
+      <button class="add">Læg i indkøbskurv</button>
+    </div>
+
+    <p class="description">{product.description}</p>
+
+
+    <div class="meta">
+      <div><span>SIZE</span><strong>{product.size} CL</strong></div>
+      <div><span>ABV</span><strong>{product.ABV}% VOL.</strong></div>
+      <div><span>STYLE</span><strong>{product.style}</strong></div>
+
+<div class="color-row">
+  <span>COLOR</span>
+
+  <section class="colors">
+    <span class={`dot ${product.color == 1 ? "active" : ""}`} style="background:#f5e6c8"></span>
+    <span class={`dot ${product.color == 2 ? "active" : ""}`} style="background:#e0b04b"></span>
+    <span class={`dot ${product.color == 3 ? "active" : ""}`} style="background:#c68642"></span>
+    <span class={`dot ${product.color == 4 ? "active" : ""}`} style="background:#a65a2a"></span>
+    <span class={`dot ${product.color == 5 ? "active" : ""}`} style="background:#7b3f00"></span>
+    <span class={`dot ${product.color == 6 ? "active" : ""}`} style="background:#5a2e0c"></span>
+    <span class={`dot ${product.color == 7 ? "active" : ""}`} style="background:#3b1f0a"></span>
+    <span class={`dot ${product.color == 8 ? "active" : ""}`} style="background:#1f1005"></span>
+  </section>
+</div>
+
+      <div><span>ALLERGEN</span><strong>{product.allergen}</strong></div>
+    </div>
+  </div>
+
+</section>
+
+
+<section class="extra">
+  <h3>Hvor stammer prisen fra</h3>
+
+  <p>
+  {FAULT_TEXT[Number(product.fault)] || "Ingen beskrivelse"}
+  </p>
+</section>
+
+<section class="hours">
+  <Productgrid>
+    </section>
+
+
+
+</Layout>
+
+<style>
+.product {
+  font-family: sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  padding: 40px;
+  margin: 20px 80px 20px 20px;
+}
+
+.image-wrapper {
+  background: linear-gradient(to bottom, #a5c5a0, #2b5112);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  padding: 60px;
+}
+
+.image-wrapper img {
+  max-width: 460px;
+  height: auto;
+
+}
+
+
+.info h1 {
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.info h2 {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+
+}
+
+.price {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.compare {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+
+.options {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.options button {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid #000;
+  background: none;
+}
+
+ 
+
+.options button:hover {
+  background: #2e3d2f;
+  color: white;
+}
+.options button.active {
+  background: #2e3d2f;
+  color: white;
+}
+
+
+.cart {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.quantity {
+  display: flex;
+  border: 1px solid #000;
+}
+
+.quantity span {
+  padding: 10px 15px;
+}
+
+.add {
+  background: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+}
+
+.add:hover {
+  background: #ffffff;
+  color: black;
+  border: 1px solid #000000;
+}
+
+
+.description {
+
+  margin: 20px 0;
+  color: #444;
+}
+
+
+.meta {
+  border-top: 1px solid #ddd;
+  
+}
+
+.meta div {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+
+.color-row {
+  align-items: center;
+}
+
+.colors {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.dot.active {
+  opacity: 1;
+  border: 2px solid black;
+ margin-top: -2px;
+}
+
+
+.extra {
+  padding: 0px 40px;
+    margin: 20px 80px 20px 20px;
+      font-family: sans-serif;  
+}
+
+.extra h3 {
+  margin-bottom: 10px;
+}
+
+.extra p {
+  max-width: 600px;
+  color: #555;
+}
+</style>
+
+
+<script>  const buttons = document.querySelectorAll(".options button");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      
+      // fjern active fra alle
+      buttons.forEach(b => b.classList.remove("active"));
+
+      // tilføj active til den klikkede
+      btn.classList.add("active");
+
+    });
+  });
+  </script>
+
+  

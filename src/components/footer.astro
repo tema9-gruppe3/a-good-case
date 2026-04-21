@@ -1,0 +1,103 @@
+---
+---
+<footer class="footer">
+  <div class="container">
+
+    <div class="col">
+      <h4>Om os</h4>
+      <a href="#">Kontakt os</a>
+      <a href="#">FAQ</a>
+      <a href="#">Levering og prisgaranti</a>
+      <a href="#">Partnerskaber</a>
+      <a href="#">Lagersalg</a>
+      <a href="#">Ølfestival</a>
+    </div>
+
+    <div class="col">
+      <h4>Products</h4>
+      <a href="#">Øl</a>
+      <a href="#">Smagskasser</a>
+    </div>
+
+    <div class="col">
+      <h4>Social</h4>
+      <a href="#">Nyhedsbrev</a>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+    </div>
+
+    <div class="col">
+      <h4>Rettigheder</h4>
+      <a href="#">Cookiepolitik</a>
+      <a href="#">Smiley report</a>
+      <a href="#">Refunderingspolitik</a>
+      <a href="#">Aldersverificering</a>
+      <a href="#">Persondatapolitik</a>
+      <a href="#">Handelsbetingelser</a>
+    </div>
+
+    <div class="col">
+      <h4>Åbningstider</h4>
+      <p>Lagersalg samt afhentning af onlineordrer:</p>
+      <p>Onsdag-Fredag: 10:00 - 17:00</p>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+.footer {
+  background: #0A2C0C; 
+  color: #e5efe8;
+  padding: 80px 40px;
+  font-family: sans-serif;
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 60px;
+}
+
+
+.col h4 {
+  margin-bottom: 20px;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+
+.col a {
+  display: block;
+  margin-bottom: 10px;
+  color: #e5efe8;
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.9;
+  transition: 0.2s;
+}
+
+.col a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+
+.col p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  opacity: 0.9;
+}
+
+
+
+@media (max-width: 500px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

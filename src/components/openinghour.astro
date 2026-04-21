@@ -1,0 +1,113 @@
+---
+import Newsletter from "./newsletter.astro"
+---
+<section class="hours">
+  
+  <img src="/images/stock-big.png" alt="" class="bg" />
+
+  <div class="card">
+    <p class="top">VORES LAGERSALGS ÅBNINGSTIDER</p>
+
+    <h3>LAGERSALG BRØNDBY</h3>
+
+    <p>
+      Vallensbækvej 55<br />
+      2605 Brøndby
+    </p>
+
+    <div class="block">
+      <p class="label">ÅBNINGSTIDER:</p>
+      <p>ONSDAG - FREDAG</p>
+      <p>KL. 10:00-17:00</p>
+    </div>
+
+    <div class="block">
+      <p class="label">EKSTRA ÅBENT:</p>
+      <p>LØRDAG D. 28. MARTS</p>
+      <p>KL. 11:00-14:00</p>
+    </div>
+
+    <div class="block">
+      <p>TIRSDAG D. 31. MARTS &</p>
+      <p>ONSDAG D. 1. APRIL</p>
+      <p>KL. 10:00-17:00</p>
+    </div>
+
+    <a href="#" class="link">Læs mere om lagersalg</a>
+  </div>
+
+
+  <Newsletter />
+
+</section>
+
+<style>
+.hours {
+  position: relative;
+  height: 600px;
+font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+}
+ .hero{  position: relative;}
+
+.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.card {
+  position: relative;
+  background: #f4f4f4;
+  padding: 40px 20px;
+  text-align: center;
+  max-width: 320px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+
+.top {
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 60px;
+
+  color: #666;
+
+}
+
+.card h3 {
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+.card p {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.label {
+  margin-top: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.block {
+  margin-top: 20px;
+}
+
+.link {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 13px;
+  text-decoration: underline;
+  color: black;
+}
+</style>
