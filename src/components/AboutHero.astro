@@ -1,0 +1,49 @@
+---
+const { title, text1, text2, text3, image, alt } = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero-text">
+    <h1>{title}</h1>
+    <p>{text1}</p>
+    <p>{text2}</p>
+    <p>{text3}</p>
+  </div>
+
+  <div class="hero-image">
+    <img src={image} alt={alt} />
+  </div>
+</section>
+
+<style>
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background: #f3f3ef;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    align-items: center;
+  }
+
+  .hero-text h1 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+  }
+
+  .hero-text p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .hero-image img {
+    width: 100%;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
