@@ -1,0 +1,84 @@
+---
+---
+
+<section class="people">
+  <h2>Ansatte</h2>
+
+  <div class="people-grid">
+    <div class="person">
+      <img src="/images/stock-big.png" alt="Jesper Nordlund" />
+      <div class="info">
+        <p class="name">Jesper Nordlund</p>
+        <p class="role">Co-founder og Direktør</p>
+      </div>
+    </div>
+
+    <div class="person">
+      <img src="/images/stock-big.png" alt="Mads Krog" />
+      <div class="info">
+        <p class="name">Mads Krog</p>
+        <p class="role">Co-founder / CSO</p>
+      </div>
+    </div>
+
+    <div class="person">
+      <img src="/images/stock-big.png" alt="Lasse" />
+      <div class="info">
+        <p class="name">Lasse</p>
+        <p class="role">Co-founder / CSO</p>
+      </div>
+    </div>
+
+    <div class="person">
+      <img src="/images/stock-big.png" alt="Medarbejder" />
+      <div class="info">
+        <p class="name">Navn</p>
+        <p class="role">Stilling</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .people {
+    padding: 4rem 2rem;
+    background: #ffffff;
+  }
+
+  .people h2 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .people-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+  }
+
+  .person {
+    background: #f5f5f5;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .person img {
+  width: 100%;
+  height: 380px;
+  object-fit: cover;
+}
+
+  .info {
+    padding: 1rem;
+  }
+
+  .name {
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .role {
+    font-size: 0.9rem;
+    color: #666;
+  }
+</style>
