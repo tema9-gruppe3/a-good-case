@@ -1,45 +1,27 @@
 ---
 //@ts-nocheck
-const endpoint = "https://pcuccheoqxtgipxffkca.supabase.co/rest/v1/beer?select=*";
-const options={
-  headers: {
-    apikey: "sb_publishable_Mrlx3PF_AAOoGsqYkZUdAg_MuIytlea",
-  }
-}
-const data = await fetch(endpoint, options).then(res => res.json());
+const { product } = Astro.props;
 
 
-
+if (!product) return null;
 ---
 
-<section class="products">
- 
-
-    
-
-  <div class="grid">
-   {data.map((p) => (
-  <a 
-    href={`details/${p.id}`} 
-    class="Pcard" 
-    data-type={p.type}
-  >
-    <div class="card">
-      <div class="image-wrapper" style={`background:${p.bg}`}>
-        <img src={p.image} alt={p.productname} />
-      </div>
-
-      <p class="brand">{p.brand}</p>
-      <h3>{p.productname}</h3>
-      <p class="price">{p.price} DKK</p>
-      <button>Læg i kurv</button>
+<a 
+  href={`details/${product.id}`} 
+  class="Pcard" 
+  data-type={product.categories?.toLowerCase() || ""}
+>
+  <div class="card">
+    <div class="image-wrapper" style={`background:${product.bg}`}>
+      <img src={product.image} alt={product.productname} />
     </div>
-  </a>
-))}
+
+    <p class="brand">{product.brand}</p>
+    <h3>{product.productname}</h3>
+    <p class="price">{product.price} DKK</p>
+    <button>Læg i kurv</button>
   </div>
-
-
-</section>
+</a>
 
 
 <style>
@@ -54,8 +36,6 @@ const data = await fetch(endpoint, options).then(res => res.json());
       font-family: sans-serif;
      
 }
-
-
 
 .grid {
   display: grid;
